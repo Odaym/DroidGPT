@@ -1,9 +1,11 @@
 package com.saltserv.droidgpt.ui.gpt
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,14 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.saltserv.droidgpt.main.MainViewModel
 
-@Preview
-@Composable
-private fun MyGPTPreview() {
-    MyGPT()
-}
-
 @Composable
 fun MyGPT(
+    textToSpeech: TextToSpeech,
     viewModel: MainViewModel = hiltViewModel()
 ) {
     Box(
@@ -31,10 +28,10 @@ fun MyGPT(
             Spacer(modifier = Modifier.height(16.dp))
 
             GetGPTButton {
-                viewModel.getGPTResponse()
+                viewModel.getGPTResponse(textToSpeech)
             }
 
-            GPTResponse(viewModel.gptResponse.value)
+            GPTResponse(response = viewModel.word.value)
         }
     }
 }

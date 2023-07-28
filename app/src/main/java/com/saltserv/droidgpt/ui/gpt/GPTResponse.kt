@@ -8,10 +8,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun GPTResponse(
-    gptResponse: String? = null
+    response: String? = null
 ) {
     Text(
         modifier = Modifier.padding(10.dp),
-        text = gptResponse ?: "No GPT Response"
+        text = response ?: "No GPT Response"
     )
 }
